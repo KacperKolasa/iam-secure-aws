@@ -2,7 +2,7 @@
 
 This project secures a fresh AWS account in under 5 minutes: **strong password policy, MFA-enforced role-based groups, and CloudTrail logging to a private S3 bucket**, all defined in Terraform.
 
-![Architecture Diagram](docs/architecture.png)
+![Architecture Diagram](docs/architecture.mmd)
 
 ## ✨ Key Features
 - **Least-privilege IAM groups** (`Developers`, `Operations`, `Finance`, `SecurityAuditors`)
