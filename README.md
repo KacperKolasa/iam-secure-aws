@@ -20,7 +20,7 @@ This project secures a fresh AWS account in under 5 minutes: **strong password p
 
 ## Quick Start
 ```powershell
-git clone https://github.com/kacperkolasa/aws-iam-secure.git
+git clone https://github.com/KacperKolasa/iam-secure-aws.git
 cd aws-iam-secure
 terraform init
 terraform apply
