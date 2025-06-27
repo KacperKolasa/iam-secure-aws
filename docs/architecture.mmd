@@ -1,0 +1,30 @@
+flowchart LR
+  %% ---------- Identity layer ----------
+  Root["Root User\n(MFA Enabled)"]
+  IAM["IAM Service"]
+  Root -->|"One-time hardening"| IAM
+
+  %% ---------- Role-based groups ----------
+  subgraph "Role-based Groups"
+    Dev["Developers\n(PowerUser)"]
+    Ops["Operations\n(PowerUser)"]
+    Fin["Finance\n(ReadOnly)"]
+    Sec["Security Auditors\n(ReadOnly)"]
+  end
+  IAM --> Dev
+  IAM --> Ops
+  IAM --> Fin
+  IAM --> Sec
+
+  %% ---------- Policy enforcement ----------
+  DenyMFA["Custom Policy:\nDeny unless MFA"]
+  Dev --> DenyMFA
+  Ops --> DenyMFA
+  Fin --> DenyMFA
+  Sec --> DenyMFA
+
+  %% ---------- Logging layer ----------
+  CloudTrail["Multi-Region CloudTrail"]
+  LogBucket["Private S3 Log Bucket"]
+  IAM -.->|API events| CloudTrail
+  CloudTrail --> LogBucket
